@@ -1,4 +1,4 @@
-# ST3009 - Statistical Methods for Computer Science
+# ST3009 - Statistical Methods for Computer Science @ TCD
 
 Repository for 3rd Year Statistical Methods module.  
 See "ST3009_description.pdf" for details.  
