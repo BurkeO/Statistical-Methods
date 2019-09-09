@@ -1,0 +1,232 @@
+\documentclass{report}
+\title{\textbf{Statistics - Week 2 Questions}\\Owen Burke, 15316452}
+\begin{document}
+	\maketitle
+	\section*{\hfil Question 1 \hfil}
+	A 6-sided die is rolled three times.
+		\subsection*{a)How many elements are there in the sample space?}
+		
+		By the product rule of counting (the number of ways the first dice throw can land is 6. Same for the second and third), this gives us 6*6*6 ways the three dice can land, where each combination is an element in the sample space.
+		
+		\begin{center}
+			Therefore there are 6*6*6 = 6\textsuperscript{3} = \textbf{216} elements in the sample space.
+		\end{center}
+	
+		\subsection*{b)Out of the possible sets of outcomes, calculate in how many at least one 2 is rolled.Using this, calculate what the probability is that at least one 2 is rolled.}
+		
+		The logic behind this answer, is that for each position the 2/2's are in, find how many ways they can appear in those position(s) and then find how many different positions they can appear in.\\
+		Let's begin with one 2, saying it's in the first position.\\
+		The first dice must be the 2, then there are 5 options for the second dice (anything but a 2) and also 5 for the third. This gives us 1*5*5 = 25 ways the 2 can appear in the first position.\\
+		Now we must find how many ways one 2 can appear among the three dice. This is simply given by ${3 \choose 1}$ = 3.\\
+		Now, we just perform 25*3 = 75 ways you can get one 2 among three dice.\\
+		Given that the question says "at least", we must perform the same operations for two 2's and three 2's.\\
+		Two 2's = 1*1*5 = 5 * ${3 \choose 2}$ = 15.\\
+		Three 2's = 1*1*1 = 1 * ${3 \choose 3}$ = 1.\\
+		We then simply add these results together to get the total number of outcomes.
+		\begin{center}
+			75 + 15 + 1 = \textbf{91} outcomes with at least one 2 rolled.\\
+		\end{center}
+		This is the size of event E ($\vert$E$\vert$ = 91). Given that we know the size of the sample space is 216 ($\vert$S$\vert$ = 216), the probability of event E, where E is the event that at least one 2 is rolled, is given by P(E) = $\frac{\#E}{\#S}$.
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$ = $\frac{91}{216}$ = \textbf{0.421296296}
+		\end{center}
+		
+			
+		\subsection*{c)Write a small matlab simulation of this experiment and confirm that the observed probability that at least one 2 is rolled matches your calculation in (a).}
+		
+			inc = 0;\\
+			lim = 10000;\\
+			atLeast1Two = 0;\\
+			while(inc <= lim)\\
+			\indent roll = randi([1,6],1,3);\\
+			\indent for i=1:length(roll)\\
+			\indent \indent if(roll(i) == 2)\\
+			\indent \indent \indent atLeast1Two = atLeast1Two + 1;\\
+			\indent \indent \indent break;\\
+			\indent \indent end\\
+			\indent end\\
+			\indent inc = inc + 1;\\
+			end\\
+			pos = atLeast1Two/lim;\\
+			fprintf("pos = \%f", pos);
+			\begin{center}
+				One of the given outputs was = \textbf{0.421800}.
+			\end{center}
+			
+		
+		\subsection*{d)What is the probability that the sum of the die rolls is 17?}
+		Firstly, there are only three ways that three dice can sum up to 17.\\
+		These are \{(6,6,5), (6,5,6), (5,6,6)\}\\
+		Let's say that event E is the event that the three dice sum up to 17 and, as we can see above, \#E = 3.\\
+		As before the probability of event E, is given by
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$.
+		\end{center}
+		Given that we know from a) that \#S = 216,
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$ = $\frac{3}{216}$ = \textbf{0.013888888}.
+		\end{center}
+	
+	
+		\subsection*{e)What is the probability that the sum of the three die rolls is 12 given that the first roll was a 1?}
+		Firstly, given that the first roll must be a 1, there are only two ways that the dice can sum up to 12.\\
+		E = \{(1,5,6), (1,6,5)\}\\
+		In this case, the sample size is 1*6*6 = 36, given that we are only considering throws that start with a 1 and the other two throws can be any of the 6 sides, giving 1*6*6 = 36 different throws that start with a 1.\\
+		So, as before, saying that event E is the event that the three dice sum to 12 with a 1 for the first roll
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$ = $\frac{2}{36}$ = \textbf{0.055555556}.
+		\end{center}
+	
+		
+		
+		
+		
+				
+	
+	\section*{\hfil Question 2 \hfil}
+	I roll a 6-sided die. If it comes up a 1 then I throw a six-sided die and otherwise a 20-sided die.
+		\subsection*{a)What is the probability that the second throw comes up a 5?}
+		Let's say that event E is the event of the second throw coming up a 5.\\
+		Also let's say that F\textsubscript{1} is the event of rolling a 1 on the first dice,\\
+		and that F\textsubscript{2} is the event of rolling anything but a 1 on the first dice.
+		\begin{center}
+			We know that P(E) = P(E $\cap$ F\textsubscript{1}) + P(E $\cap$ F\textsubscript{2})
+		\end{center}
+		This can be re-written in terms of values we already know, as below
+		\begin{center}
+			P(E) = P(F\textsubscript{1})P(E$\vert$F\textsubscript{1}) + P(F\textsubscript{2})P(E$\vert$F\textsubscript{2})
+		\end{center}
+		as P(X$\vert$Y) = $\frac{P(X \cap Y)}{P(Y)}$ for some X and Y.\\\\
+		P(E$\vert$F\textsubscript{1}) = $\frac{1}{6}$ as it means given a roll of a 1, what are the odds of rolling a 5 (on a 6 sided dice, as that's what a 1 gives us). This is $\frac{1}{6}$ as the odds of getting any one number on a 6 sided dice is $\frac{1}{6}$.\\\\
+		By similar logic, P(E$\vert$F\textsubscript{2}) = $\frac{1}{20}$ as it means given a roll of not a 1, what are the odds of rolling a 5 (on a 20 sided dice, as that's what anything but a 1 gives us). This is $\frac{1}{20}$ as the odds of getting any one number on a 20 sided dice is $\frac{1}{20}$.\\\\
+		We now plug the values into the formula 
+		\begin{center}
+			P(E) = P(F\textsubscript{1})P(E$\vert$F\textsubscript{1}) + P(F\textsubscript{2})P(E$\vert$F\textsubscript{2})
+		\end{center}
+		giving
+		\begin{center}
+			P(E) = ($\frac{1}{6}$ * $\frac{1}{6}$) + ($\frac{5}{6}$ * $\frac{1}{20}$) = \textbf{0.069444444}.
+		\end{center}
+		
+		
+		
+		
+		
+		\subsection*{b)What is the probability that the second throw comes up a 15?}
+		This is a very similar process to part a).\\
+		We know say that event E is the event that the second throw comes up a 15.\\
+		We use the same formula as above
+		\begin{center}
+			P(E) = P(F\textsubscript{1})P(E$\vert$F\textsubscript{1}) + P(F\textsubscript{2})P(E$\vert$F\textsubscript{2})
+		\end{center}
+		The values within the formula are the same as above as well, except for P(E$\vert$F\textsubscript{1}).\\
+		This is now 0, as the odds of throwing a 15 on a 6 sided dice is 0 (impossible).\\
+		So, as above we put the values into the formula, giving
+		\begin{center}
+			P(E) = ($\frac{1}{6}$ * 0) + ($\frac{5}{6}$ * $\frac{1}{20}$) = \textbf{0.041666666}.
+		\end{center}
+		
+		
+		
+		\section*{\hfil Question 3 \hfil}
+		\subsection*{At a certain stage of a criminal investigation, the inspector in charge is 60 percent convinced of the guilt of a certain suspect. Suppose, however, that a new piece of evidence which shows that the criminal has a certain characteristic (such as left-handedness, baldness, or brown hair) is uncovered. If 20 percent of the population possesses this characteristic, use Bayes Rule to calculate how certain of the guilt of the suspect should the inspector now be if it turns out that the suspect has the characteristic.}
+		
+		Firstly, let's say that event G is that the person is guilty and event LH is that somebody is left-handed (this will be the characteristic). Let's also say event NG is that they are not guilty.\\\\
+		Bayes Rule states P(G$\vert$LH) = $\frac{P(LH \vert G)P(G)}{P(LH)}$\\\\
+		This P(G$\vert$LH) is what we are looking for ("the probability he is guilty, given that we know he is left-handed).\\
+		There are a number of quantities we must find in order to determine the suspect's guilt. We know the criminal is left-handed, and knowing this we must find the probability that the suspect is left-handed (for the bottom of Bayes rule). This will be equal to the sum of the probabilities that the suspect is "not guilty and left-handed" + "guilty and left-handed".
+		\begin{center}
+			"Not guilty and left-handed" is given by P(NG $\cap$ LH).\\
+			This is equal to P(LH$\vert$NG)P(NG), as P(X$\vert$Y) = $\frac{X \cap Y}{P(Y)}$ for some X and Y.
+		\end{center}
+		\begin{center}
+			"Guilty and left-handed" is given by P(G $\cap$ LH).\\
+			This is equal to P(LH$\vert$G)P(G), as P(X$\vert$Y) = $\frac{X \cap Y}{P(Y)}$ for some X and Y.
+		\end{center}
+		We can now find P(LH).\\\\
+		P(LH) = P(LH$\vert$G)P(G) + P(LH$\vert$NG)P(NG)\\\\
+		P(LH$\vert$NG) = 0.2 as the probability of someone having the characteristic and not being guilty is the chance of someone from the population having the characteristic, which we know from the question is 0.2\\
+		P(LH$\vert$G) = 1 as the probability of someone being left-handed given that they are guilty is 100\% as we know the criminal is certainly left-handed.\\
+		P(G) = 0.6 as we know the detective is 60\% convinced.\\
+		Therefore P(NG) = 0.4 as we know the detective is 40\% sure he is not guilty (1-0.6).\\
+		These values give us
+		\begin{center}
+			P(LH) = (1*0.6) + (0.2*0.4).
+		\end{center}
+		We can now plug this into Bayes rule
+		\begin{center}
+			P(G$\vert$LH) = $\frac{P(LH \vert G)P(G)}{P(LH)}$ 
+		\end{center}
+		giving us
+		\begin{center}
+			P(G$\vert$LH) = $\frac{1*0.6}{(1*0.6) + (0.2*0.4)}$ = \textbf{0.882}
+		\end{center}
+		
+		
+		
+		
+		
+		
+		
+		\section*{\hfil Question 4 \hfil}
+		\subsection*{See the questions pdf}
+		For each location, we are looking for the probability that the user is in that location, given two bars of signal.\\
+		This is the same as P(L$\vert$B), where L is the event that they are in that location and B is the event that they observe two bars of signal.\\
+		This is given as 
+		\begin{center}
+			P(L$\vert$B) = $\frac{P(B \vert L)P(L)}{P(B)}$
+		\end{center}
+		From each of the two grids, we know P(B$\vert$L) (the second diagram) and P(L) (the first diagram).\\
+		However, we don't know P(B).\\
+		But, through marginalisation, we can find it, as 
+		\begin{center}
+			P(B) = P(B $\cap$ L\textsubscript{1}) + P(B $\cap$ L\textsubscript{2}) + ....... + P(B $\cap$ L\textsubscript{16})\\
+			where L\textsubscript{1} is the event of being in location 1 and so on.
+		\end{center}
+		However we don't know P(B) for the intersection.\\
+		Although P(B $\cap$ L\textsubscript{1}) = P(L\textsubscript{1})P(B$\vert$L\textsubscript{1}) and we can figure that out as the values are given to us in the grids.\\
+		We can then do this for every P(B $\cap$ L\textsubscript{n}) to get P(B), as shown above.\\
+		We can then find P(L\textsubscript{n}$\vert$B) for each n by using Bayes rule (as shown above).\\\\
+		The lines:\\
+		\indent	for i = 1:numel(location)\\
+		\indent \indent p\_b = p\_b + (location(i) * barsGivenLoc(i));\\
+		\indent end\\
+		returns P(B) by getting P(B$\vert$L\textsubscript{n}) * P(L) for each n up to 16, where P(B$\vert$L\textsubscript{n}) is from the second grid and P(L) is from the first.\\\\
+		The lines:\\
+		\indent locGivenBars = zeros(4,4);\\
+		\indent for i = 1:numel(locGivenBars)\\
+		\indent \indent locGivenBars(i) = (barsGivenLoc(i) * location(i))/p\_b;\\
+		\indent end\\
+		simply performs Bayes rule for each location and adds the final results into the end matrix which hold the new probabilities of the user being in each location given the cell tower observation.\\\\
+		\textbf{Result :}
+		
+		\begin{center}
+			0.0744,     0.1885,     0.0744,     0.0050\\
+			0.0050,     0.1488,     0.0942,     0.0744\\
+			0.0010,     0.0050,     0.1488,     0.0942\\
+			0.0010,     0.0010,     0.0099,     0.0744\\
+		\end{center}
+	
+		\textbf{Code :}\\
+		\indent location = [0.05 0.1 0.05 0.05; 0.05 0.1 0.05 0.05; 0.05 0.05 0.1 0.05; 0.05 0.05 0.1 0.05];\\
+		\indent barsGivenLoc = [0.75 0.95 0.75 0.05; 0.05 0.75 0.95 0.75; 0.01 0.05 0.75 0.95; 0.01 0.01 0.05 0.75];\\
+		\indent	p\_b = 0;\\
+		\indent for i = 1:numel(location)\\
+		\indent \indent p\_b = p\_b + (location(i) * barsGivenLoc(i));\\
+		\indent end\\
+		\indent \%disp(p\_b);\\
+		\indent locGivenBars = zeros(4,4);\\
+		\indent for i = 1:numel(locGivenBars)\\
+		\indent \indent locGivenBars(i) = (barsGivenLoc(i) * location(i))/p\_b;\\
+		\indent end\\
+		\indent disp(locGivenBars);\\
+		
+	
+	
+		
+		
+\end{document}
+
+
+
+

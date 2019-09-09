@@ -1,0 +1,300 @@
+\documentclass{report}
+\title{\textbf{Statistics - Week 3 Questions}\\Owen Burke, 15316452}
+\begin{document}
+	\maketitle
+	\section*{\hfil Question 1 \hfil}
+	Say we roll a fair 6-sided die six times. Using the fact that each roll is an independent random event, what is the probability that we roll:
+		\subsection*{a)The sequence 1,1,2,2,3,3 ?}
+		
+		Firstly, let's define the events.\\
+		Let's say event R\textsubscript{1} is the event that we roll the desired number on the first dice (a 1 in this case).\\
+		The same for R\textsubscript{2} (also a 1), R\textsubscript{3} (a 2 for this dice) and so on.\\
+		Given that we know the events are independent we can say
+		
+		\begin{center}
+			P(R\textsubscript{1} $\cap$ R\textsubscript{2} $\cap$ R\textsubscript{3} .......... R\textsubscript{6}) = P(R\textsubscript{1})P(R\textsubscript{2})P(R\textsubscript{3}).......P(R\textsubscript{6}).
+		\end{center}
+
+		from the rule 
+
+		\begin{center}
+			P(E $\cap$ F) = P(E)P(F), for some E and F.
+		\end{center}
+
+		Let's call event (R\textsubscript{1} $\cap$ R\textsubscript{2} $\cap$ R\textsubscript{3} .......... R\textsubscript{6}), event E\\
+		where E is the event that we roll the required sequence.\\
+		From the rule above, we can get this probability by simply multiplying the probabilities of the individual events whose intersections make up event E.\\
+		We already know that the probability of rolling a certain number on a six sided dice is $\frac{1}{6}$.\\
+		So P(E) = $\frac{1}{6}$ * $\frac{1}{6}$ * $\frac{1}{6}$ * $\frac{1}{6}$ * $\frac{1}{6}$ * $\frac{1}{6}$\\
+		Therefore the result is 
+
+		\begin{center}
+			P(E) = $\frac{1}{46656}$
+		\end{center}
+
+
+	
+		\subsection*{b)A three exactly 4 times?}
+
+		The logic behind this answer is to find how many ways the three's can appear in a certain position among the six rolls.\\
+		Then multiply that result by how many positions they can hold among the rolls.\\
+		So, for example, let's begin by saying the 4 three's appear in the first, second, third and fourth roll. We know that they can appear in this layout
+		in 1*1*1*1*5*5 = 25 different ways as the last two rolls must be anything but three's.\\
+		We then find how many layouts the 4 three's can occupy. This is simply given by ${6 \choose 4}$ = 15.\\
+		So our result is 15*25 = 375.\\
+		Let's call this event, that we roll exactly 4 three's, E.\\
+		So now we know \#E = 375.\\
+		So to get P(E) we use the formula
+
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$, where S is the sample space.
+		\end{center}
+
+		We know the sample space size is 6*6*6*6*6*6 = 46656 as thats the total number of ways you can roll a dice six times. (We also know it from the previous question).\\
+		So, now P(E) is
+
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$ = $\frac{375}{46656}$
+		\end{center}
+
+
+
+
+			
+		\subsection*{c)A single 1}
+		
+			This is a similar approach to part b).\\
+			Let's say the 1 is the first roll. We know the number of ways it can appear in the first dice is 1*5*5*5*5*5 (the others are 5 as they must be anything but a roll of 1).\\
+			This 1*5*5*5*5*5 = 3125.\\
+			We then multiply this by how many ways a single 1 can appear among 6 rolls, which is given by ${6 \choose 1}$ = 6.\\
+			This results in 3125*6 = 18750.\\
+			Call event E the event that we roll a single 1.\\
+			The probability of E is given by 
+
+			\begin{center}
+				P(E) = $\frac{\#E}{\#S}$, where S is the sample space.
+			\end{center}
+
+			giving us, as we know the sample space from the previous part,
+
+			\begin{center}
+				P(E) = $\frac{18750}{46656}$
+			\end{center}
+
+
+		
+		\subsection*{d)One or more 1’s}
+		Again, this is a similar process to the previous parts.\\
+		However, we must start with one 1, find the result and then add that to the result of two 1's, and three 1's and so on.\\
+		So, firstly, for a single 1, we know it's given by\\\\
+		One 1 = (1*5*5*5*5*5) * ${6 \choose 1}$ = 5\textsuperscript{5} * ${6 \choose 1}$.\\\\
+		And by the same logic for two 1's it is\\\\
+		Two 1's = (1*1*5*5*5*5) * ${6 \choose 2}$ = 5\textsuperscript{4} * ${6 \choose 2}$.\\\\
+		This is repeat as so\\\\
+		Three 1's = (1*1*1*5*5*5) * ${6 \choose 3}$ = 5\textsuperscript{3} * ${6 \choose 3}$.\\\\
+		Four 1's = (1*1*1*1*5*5) * ${6 \choose 4}$ = 5\textsuperscript{2} * ${6 \choose 4}$.\\\\
+		Five 1's = (1*1*1*1*1*5) * ${6 \choose 5}$ = 5\textsuperscript{1} * ${6 \choose 5}$.\\\\
+		Six 1's = (1*1*1*1*1*1) * ${6 \choose 6}$ = 1 * ${6 \choose 6}$.\\\\
+		We then simply add these results like so
+
+		\begin{center}
+			(5\textsuperscript{5} * ${6 \choose 1}$) + (5\textsuperscript{4} * ${6 \choose 2}$) + (5\textsuperscript{3} * ${6 \choose 3}$) + (5\textsuperscript{2} * ${6 \choose 4}$) + 
+			(5\textsuperscript{1} * ${6 \choose 5}$) + (1 * ${6 \choose 6}$)
+		\end{center}
+
+		giving us, if we call event E the event that we roll at least one 1
+		
+		\begin{center}
+			\#E = 31031
+		\end{center}
+
+		So, as before 
+		
+		\begin{center}
+			P(E) = $\frac{\#E}{\#S}$ = $\frac{31031}{46656}$
+		\end{center}
+		
+		
+		
+		
+				
+	
+	\section*{\hfil Question 2 \hfil}
+	Suppose one 6-sided and one 20-sided die are rolled. Let A be the event that the first die comes up 1 
+	and B that the sum of the dice is 2. Are these events independent? Explain using the formal definition of independence.\\
+
+	The formal definition of independence states two events (E and F) are independent if 
+		
+	\begin{center}
+		P(E $\cap$ F) = P(E)P(F)
+	\end{center}
+
+	So, we need to find P(A), P(B) and P(A $\cap$ B) and then determine if the formula above holds true.\\
+	We know the probability of event A is $\frac{1}{6}$ as that is the probability of getting any one number on a six sided dice.\\
+	Event B is the event that the two dice sum to 2, and there is clearly only one way this can happen. If each dice lands on a 1.\\
+	So B = {(1,1)}.\\
+	P(B) = $\frac{\#B}{\#S}$ where S is the sample size (in this case, the number of outcomes of rolling both a 6-sided and 20-sided dice).\\
+	This is given by 6*20 = 120 = \#S.\\
+	So P(B) = $\frac{1}{120}$.\\
+	P(A $\cap$ B) is the probability that the first die comes up 1 and that they sum to 2. This is clearly the same as P(B), as there's no other way 
+	the first dice can land on a 1 and the dice sum to 2 other than (A $\cap$ B) = {(1,1)}.\\
+	So, does the formula hold true?\\
+	No, it does not as 
+
+	\begin{center}
+		($\frac{1}{120}$) $\neq$ ($\frac{1}{120}$) * ($\frac{1}{6}$) from the definition of independence stated above.
+	\end{center}
+
+	\textbf{So the events are not independent.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	\section*{\hfil Question 3 \hfil}
+	Say a hacker has a list of n distinct password candidates, only one of which will successfully log her into a secure system.
+		\subsection*{a) If she tries passwords from the list uniformly at random, deleting those passwords that do not work, what is the probability that her first 
+		successful login will be (exactly) on her k-th try?}
+			To start with the hacker has n passwords on her list.\\
+			So the probability of her picking the correct one at random will be $\frac{1}{n}$ for her first go.\\
+			However for her subsequent tries, we must take into account the odds of the previous go failing, plus her k-th try being successful.\\
+			This gives the series $\frac{n-1}{n}$ * $\frac{n-2}{n-1}$ * $\frac{n-3}{n-2}$ ............... $\frac{1}{n-k+1}$ for some n and k.\\
+			The denominator (as well as the numerator) is being reduced as the list of passwords is made smaller after an incorrect guess.\\
+			This series gives the odds of all previous tests failing and then the odds of the k-th one being successful.\\
+			This can also be given : $\frac{1}{(n-k)+1}$ * $\prod_{i=0}^{i<(k-1)} \frac{n-(i+1)}{n-i}$ \\
+		
+		\subsection*{b) When n= 6 and k= 3, what is the value of this probability ?}
+			We simply insert these values into the series from part a).\\
+			This is given as 
+		
+			\begin{center}
+				($\frac{1}{(6-3)+1}$) * ($\frac{6-(0+1)}{6-0}$) * ($\frac{6-(1+1)}{6-1}$) = $\frac{1}{6}$
+			\end{center}
+		
+
+
+		\subsection*{c) Now say the hacker tries passwords from the list at random, but does not delete previously tried passwords from the list. 
+		She stops after her first successful login attempt. What is the probability that her first successful login will be (exactly) on her k-th try?}
+			This scenario is similar to the previous one above, but somewhat different. Given that she does not delete previous passwords, we will not obtain a series.\\
+			So we must get her odds of guessing incorrectly k times from a constant list of n items plus one correct guess.\\
+			Her correct guess is simply $\frac{1}{n}$ as you would expect when selecting randomly from a list of n items.\\
+			Her incorrect guesses are given as ($\frac{n-1}{n}$)\textsuperscript{k-1}.\\
+			This says for all her previous (k-1) tries, the odds of her guessing incorrectly are all the wrong passwords (n-1) over the whole list (n).\\
+			So the resulting formula is 
+
+			\begin{center}
+				($\frac{n-1}{n}$)\textsuperscript{k-1} * ($\frac{1}{n}$)
+			\end{center}
+
+
+
+
+
+
+
+		\subsection*{d) When n= 6 and k= 3, what is the value of this probability ? }
+			We simply insert these values into the formula from part c).\\
+			This is given as 
+
+			\begin{center}
+				($\frac{6-1}{6}$)\textsuperscript{3-1} * ($\frac{1}{6}$) = $\frac{25}{216}$
+			\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+			\section*{\hfil Question 4 \hfil}
+			A website wants to detect if a visitor is a robot. They decide to deploy three CAPTCHA tests that are hard for robots and if the visitor fails in one of the tests, 
+			they are flagged as a possible robot. The probability that a human succeeds at a single test is 0.95, while a robot only succeeds with probability 0.3. 
+			Assume all tests are independent.
+				\subsection*{a) If a visitor is actually a robot, what is the probability they get flagged?}
+					We know that the probability that a robot succeeds in a single test is 0.3.\\
+					So the probability that a robot succeeds all three tests = 0.3 * 0.3 * 0.3, as all the tests are independent.\\
+					It also applies, that the probability of a robot being flagged is 1 - (the probability they pass all tests).\\
+					This is simply
+				
+					\begin{center}
+						\textbf{1-(0.3)\textsuperscript{3} = 0.973}
+					\end{center}
+		
+				\subsection*{b) If a visitor is human, what is the probability they get flagged?}
+					We know that the probability that a human succeeds in a single test is 0.95.\\
+					So the probability that a human succeeds all three tests = 0.95 * 0.95 * 0.95, as all the tests are independent.\\
+					It also applies, that the probability of a human being flagged is 1 - (the probability they pass all tests).\\
+					This is simply
+				
+					\begin{center}
+						\textbf{1-(0.95)\textsuperscript{3} = 0.142625}
+					\end{center}
+		
+				\subsection*{c) The fraction of visitors on the site that are robots is 1/10. Suppose a visitor gets flagged. What is the probability that visitor is a robot? Hint: use Bayes Rule.}
+					Bayes rule states 
+		
+					\begin{center}
+						P(E $\vert$ F) = $\frac{P(F \vert E)P(E)}{P(F)}$, for some E and F.
+					\end{center}
+		
+					Given that we know the visitor gets flagged in this scenario, we want to know the probability it is a robot.\\
+					This is the same as P(R$\vert$F), where R is the event that the visitor is a robot and F is the event that the visitor is flagged.\\
+					From Bayes rule this is given by $\frac{P(F \vert R)P(R)}{P(F)}$.\\
+					We know P(F $\vert$ R) is 0.973 from part a) (This is the probability of being flagged given it is a robot).\\
+					We also know P(R) from the question ("The fraction of visitors on the site that are robots is 1/10") is 0.1.\\
+					So we must find P(F).\\
+					P(F) is the same as 1 - (the probability of not being flagged at all).\\
+					The probability of not being flagged / passing all tests is 
+		
+					\begin{center}
+						((the probability of a human passing) * (the probability it is a human)) + ((the probability of a robot passing) * (the probability it is a robot)) which is \\
+						((0.95)\textsuperscript{3} * 0.9) + ((0.3)\textsuperscript{3 * 0.1})\\
+						as we know the probability it is a human is 1 - (the probability it is a robot) = 0.9.\\
+						This gives P(F) = 1 - 0.7743375 = 0.2256625
+					\end{center}
+		
+					By applying this to Bayes rule, we get 
+		
+					\begin{center}
+						P(R $\vert$ F) = $\frac{(0.973)P(0.1)}{0.2256625}$ = \textbf{0.431174874}
+		\end{center}
+		
+	
+	
+		
+		
+\end{document}
+
+
+
+

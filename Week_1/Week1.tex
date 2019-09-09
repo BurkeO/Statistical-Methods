@@ -1,0 +1,55 @@
+\documentclass{report}
+\title{\textbf{Statistics - Week 1 Questions}\\Owen Burke, 15316452}
+\begin{document}
+	\maketitle
+	\section*{\hfil Question 1 \hfil}
+	A substitution cypher is derived from orderings of the first 10 letters of the
+	alphabet. How many ways can the 10 letters be ordered if each letter appears exactly once and:
+		\subsection*{a)There are no other restrictions?}
+		The total possible number of ways the 10 letters can be ordered is given by 10!\\
+		This is due to there being 10 choices of letter for the first position, then 9 for the second, 8 for the third and so on, giving 10*9*8*7*6*5*4*3*2*1 or 10! (by the product rule of counting).\\
+		The answer is therefore \textbf{3,628,800}.
+		\subsection*{b)The letters E and F must be next to each other (but in any order)?}
+		The logic behind this answer is that the letters E and F should be grouped together to form one entity. This gives the entity of E with F and eight others (a,b,c,d,g,h,i,j), resulting in 9 entities.\\
+		So, as before, there are 9! ways of ordering the entities if each appears once. However, this assumes E and F are in one order, i.e. 'EF'\\
+		Although, there are 2! ways of ordering E and F (product rule of counting).
+		So, in order to get the correct answer, we must say "for each way of ordering EF (2!), how many ways can we order it with the other eight objects? (9!)".\\
+		This gives us 9! * 2! = \textbf{725,760}.
+		\subsection*{c)How many different letter arrangements can be formed from the letters BANANA ?}
+		Firstly, we consider how many possible ways can the letters in "BANANA" be arranged. The answer is 6! (6 letters).\\However, let's number each 'N' (BAN\textsubscript{1}AN\textsubscript{2}A). This 6! assumes 'BAN\textsubscript{1}AN\textsubscript{2}A' is different from 'BAN\textsubscript{2}AN\textsubscript{1}A'. We clearly see that the letters are not actually forming a different arrangement. This logic is applied to the three A's as well.\\In order to avoid over counting the same arrangements, we divide by how many ways each group of the same objects can be ordered (i.e N\textsubscript{1}N\textsubscript{2}, N\textsubscript{2}N\textsubscript{1}) and do this for each group (the A's as well).\\For the N's, they can be ordered 2! ways (there are two N's) and 3! for the A's.\\
+		So the answer is $\frac{6!}{2!3!}$ = \textbf{60}. 
+		\subsection*{d)How many different letter arrangements can be formed by drawing 3 letters from ABCDE ?}
+		Firstly, let's consider how many ways the choice of three letters from the five can be ordered.\\First, we have 5 choices, then 4 choices and then 3 choices. This gives us 5*4*3 = 60 different orderings of three letters from the five.\\However, say if we took A,B and C, then the orderings would be ABC, ACB, BAC, BCA, CAB and CBA. In this case, we don't care about order (we consider ABC the same as ACB, as they contain the same letters). So, for our choice of whatever three we choose, we must (similar to part c) divide by how many ways there are of ordering the three we pick (3!).\\This gives us $\frac{5*4*3}{3!}$, which is the same as ${5 \choose 3}$ = \textbf{10}.\\\\
+	
+	\section*{\hfil Question 2 \hfil}
+	A 6-sided die is rolled four times.
+		\subsection*{a)How many outcome sequences are possible, where we say, for instance, that the outcome is 3, 4, 3, 1 if the first roll landed on 3, the second on 4, the third on 3, and the fourth on 1?}
+		If we roll a dice once, there are six sides, so there are 6 ways it can land. If we roll it twice, for all six numbers on the first throw, there can be another six on the second (so 6*6 = 36). This repeats for the third and fourth throw (product rule of counting), giving 6*6*6*6 = 6\textsuperscript{4} = \textbf{1296}.
+		\subsection*{b)How many of the possible outcome sequences contain exactly two 3’s ?}
+		For this question, I thought of it as four dice all thrown once rather than one dice thrown four times as it makes it a bit easier to describe.\\Firstly, the approach was to find, for the 3's being in two fixed positions (let's say dice one and two), how many ways can they appear here.\\The answer is 1*1*5*5 = 25, as the first dice must be a 3 (only one option) as well as the second dice, while the third and fourth can be any number but the 3 (so there are five options for the third and fourth dice each).\\The second step was to find how many ways the two 3's could appear amongst the four dice. This is given by $\frac{4*3}{2!}$ = ${4 \choose 2}$ = 6, as the first 3 can be in one of the four positions and the second 3 can be in one of the three remaining positions (we must divide by 2! as the first 3 can be in position one and the second in position 4, or vice versa. However, these are the same result, and must not be counted twice, hence the division by 2!).\\Then it's as simple as 6*25 from the two calculations (for all 6 positions the two 3's can be in, there are 25 ways they can be there).\\6*25 = \textbf{150}.
+		\subsection*{c)How many contain at least two 3’s ?}
+		This is a follow on from part b).\\To contain at least two 3's, we are counting the outcomes that contain exactly two 3's plus exactly three 3's plus four 3's.\\
+		From part b), we know there are 150 outcomes that contain exactly two 3's.\\
+		If there are three 3's, for each way they can appear among the 4 positions, there are 5 orderings (the last dice can be anything but a 3, i.e. 1*1*1*5).\\
+		5 * ${4 \choose 3}$ (explained in part b) = 20\\
+		If there are four 3's, there's only one way this can occur among four dice (all dice are 3's) = 1.\\
+		150 + 20 + 1 = \textbf{171}.\\\\
+		
+		\section*{\hfil Question 3 \hfil}
+		You are counting cards in a card game that uses two decks of cards. Each deck has 4 cards (the ace from each of 4 suits), so there are 8 cards total. Cards are only distinguishable based on their suit, not which deck they came from.
+		\subsection*{a)In how many distinct ways can the 8 cards be ordered?}
+		There are 8 cards (2 hearts, 2 clubs, 2 spades, 2 diamonds).\\You first option is one of 8, then one of 7, then 6 and so on, giving 8*7*6*5*4*3*2*1 = 8!\\
+		However, as mentioned earlier, there are 4 groups of 2 items that are the same, so we must divide by how many ways the two objects can be ordered (2!) for each group (4) in order to avoid counting, for example Heart\textsubscript{1}Heart\textsubscript{2} and Heart\textsubscript{2}Heart\textsubscript{1}.\\Giving $\frac{8!}{2!2!2!2!}$ = $\frac{8!}{2!\textsuperscript{4}}$ = \textbf{2520}.
+		\subsection*{b)You are dealt two cards. How many distinct pairs of cards can you be dealt? Note : the order of the two cards you are dealt does not matter.}
+		Firstly, in order to ensure distinct pairs (i.e. not being dealt a heart and another heart) we simply divide the 8 cards by 2 (8/2 = 4). These four cards are now an ace of hearts, diamonds, clubs and spades.\\Now we simply perform ${4 \choose 2}$ = $\frac{4*3}{2!}$ = 6. The purpose of the division of 2! renders the order of the cards obsolete (as explained earlier), i.e. Heart,Spade is the same as Spade,Heart (by treating all the different cards as members of the same group of objects and finding how many ways two of them can be ordered (2!)).\\
+		So the answer is ${4 \choose 2}$ = \textbf{6}.
+		\subsection*{c)You are dealt two cards. Cards with suits hearts and diamonds are considered “good” cards. How many ways can you get two “good” cards? Order does not matter.}
+		Of the 8 cards, four of them are good cards (the two hearts and two diamonds). Let's only consider those and ignore the bad cards.\\
+		So, from the four cards, the first card we're dealt will be one of four, then the second will be one of three. So there are 4*3 orderings = 12 (including duplicates such as Heart\textsubscript{1},Heart\textsubscript{2} and Heart\textsubscript{2},Heart\textsubscript{1})\\
+		As before we must divide by (the number of elements in a group)! for each group. In this case 2!2!, for the two hearts and the two diamonds, so order doesn't matter.\\
+		So, the answer is $\frac{4*3}{2!2!}$ = \textbf{3}. 
+		
+		
+		
+		
+\end{document}

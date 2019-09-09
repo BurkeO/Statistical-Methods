@@ -1,0 +1,235 @@
+\documentclass{report}
+\title{\textbf{Statistics - Week 5 Questions}\\Owen Burke, 15316452}
+\begin{document}
+	\maketitle
+	\section*{\hfil Question 1 \hfil}
+	A box contains 5 red and 5 blue marbles. Two marbles are withdrawn
+	randomly. If they are the same color, then you win \$1.10; if they are different colors, then
+	you lose \$1.00. Calculate:
+	
+		\subsection*{a)The expected value of the amount you win}
+		
+		Firstly, let's define the expected value.\\
+		This is given as :
+		
+		\begin{center}
+			E[X] = $\sum_{i=1}^{n} (X\textsubscript{i})(P(X = x\textsubscript{i}))$
+		\end{center}
+	
+		Let's say the possible values of X are 1.1 and -1 (from the question - losing \$1.00 is the same as saying X = -1).\\
+		So, from the formula, for each X, we must find the probability of X = P(X).\\
+		This is also P(winning) and P(losing). The probability of winning is the P(two reds) + P(two blues).\\
+		Let's start with P(two reds).\\
+		This is equal to P(R\textsubscript{1} $\cap$ R\textsubscript{2}), where R\textsubscript{1} is the event of the
+		first ball being red, and so on. This is given as :
+		
+		\begin{center}
+			P(R\textsubscript{1} $\cap$ R\textsubscript{2}) = P(R\textsubscript{2} $\vert$ R\textsubscript{1})P(R\textsubscript{1})
+		\end{center}
+	
+		We know P(R\textsubscript{1}) = $\frac{5}{10}$ as there are 5 red balls out of 10 balls.\\
+		We also now P(R\textsubscript{2} $\vert$ R\textsubscript{1}) = $\frac{4}{9}$ as after the first red ball, there are 4 red balls left out of 9 balls.
+		This gives :
+		
+		\begin{center}
+			P(R\textsubscript{1} $\cap$ R\textsubscript{2}) = $\frac{5}{10}$ * $\frac{4}{9}$ = $\frac{2}{9}$
+		\end{center}
+	
+		Given that there are an equal number of blues and reds, P(two reds) = P(two blues).\\
+		By this P(winning) = $\frac{2}{9}$ + $\frac{2}{9}$ = $\frac{4}{9}$ and P(losing) = 1 - $\frac{4}{9}$ = $\frac{5}{9}$.\\
+		We can now find E[X] as :
+		
+		\begin{center}
+			E[X] = (1.1)($\frac{4}{9}$) + (-1)($\frac{5}{9}$) = \textbf{-0.06666667}.
+		\end{center}
+	
+	
+	
+		\subsection*{b)The variance of the amount you win.}
+		Given that Var(X) = E[X\textsuperscript{2}] - (E[X])\textsuperscript{2}, and we can find E[X\textsuperscript{2}] as ((1.1\textsuperscript{2})($\frac{4}{9}$) + ((-1)\textsuperscript{2})($\frac{5}{9}$)) = 1.0933333333.\\
+		We also know E[X] = -0.0666667, so Var(X) is given as :
+		
+		\begin{center}
+			Var(X) = 1.093333333 - ((-0.06666667)\textsuperscript{2}) = \textbf{1.088888}
+		\end{center}
+		
+		
+		
+		
+	\section*{\hfil Question 2 \hfil}
+	Suppose you carry out a poll following an election. You do this by selecting n people uniformly at random and asking whether they voted or not, letting X\textsubscript{i} = 1 if person i voted and X\textsubscript{i} = 0 otherwise. Suppose the probability that a person voted is 0.6.
+	
+		\subsection*{a)Calculate E[X\textsubscript{i}] and Var(X\textsubscript{i}).}
+		Given that X\textsubscript{i} can only be either 0 or 1, and we know the formula for the expected value is
+		\begin{center}
+			E[X] = $\sum_{i=1}^{n} (X\textsubscript{i})(P(X = x\textsubscript{i}))$
+		\end{center} 
+		and we also know the probabilities of voting and not voting, we can find E[X\textsubscript{i}] by 
+		\begin{center}
+			E[X\textsubscript{i}] = (1)(0.6) + (0)(1-0.6) = \textbf{0.6}
+		\end{center}
+	
+		We also know the formula for variance is 
+		\begin{center}
+			Var(X\textsubscript{i}) = E[X\textsubscript{i}\textsuperscript{2}] - (E[X\textsubscript{i}])\textsuperscript{2}
+		\end{center}
+		So Var(X\textsubscript{i}) is given as
+		\begin{center}
+			Var(X\textsubscript{i}) = ((1\textsuperscript{2})(0.6) + (0\textsuperscript{2})(0.4)) - (0.6)\textsuperscript{2} = \textbf{0.24}
+		\end{center}
+		
+		
+		
+		
+	
+		\subsection*{Let Y = $\sum_{i=1}^{n} X\textsubscript{i}$}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		\subsection*{c)What is E[Y]? Is it the same as E[X] or different, and why?}
+		Given that Y = $\sum_{i=1}^{n} X\textsubscript{i}$, then we can say E[Y] = E[$\sum_{i=1}^{n} X\textsubscript{i}$]\\
+		Given that we know E[$\sum_{i=1}^{n} X\textsubscript{i}$] = $\sum_{i=1}^{n} E[X\textsubscript{i}]$, and that 
+		E[X\textsubscript{i}] = 0.6 we can conclude
+		\begin{center}
+			E[Y] = $\sum_{i=1}^{n} E[X\textsubscript{i}]$ = $\sum_{i=1}^{n} 0.6$ = (0.6)n
+		\end{center}
+		From this we conclude that E[Y] is the expected number of people who voted. This is \textbf{not} the same as E[X] (which is the expected value of whether an individual voted or not). We can also see this from the formula, as 0.6 $\neq$ (0.6)n, except where n = 1.
+		
+		
+		
+
+		\subsection*{d)What is E[$\frac{1}{n}$Y]?}
+		From E[Y] = E[$\sum_{i=1}^{n} X\textsubscript{i}$] and part c), we know E[$\sum_{i=1}^{n} X\textsubscript{i}$] = E[n(X\textsubscript{i})].\\
+		Therefore, E[$\frac{1}{n}$Y] = E[($\frac{1}{n}$)(n(X\textsubscript{i}))]. In this case, the $\frac{1}{n}$ and multiplication by n cancel out and we get
+		\begin{center}
+			E[$\frac{1}{n}$Y] = E[($\frac{1}{n}$)(n(X\textsubscript{i}))] = E[X\textsubscript{i}] = 0.6
+		\end{center}
+		
+		
+		\subsection*{e)What is the variance of $\frac{1}{n}$Y (express in terms of Var(X))?}
+		Firstly, let's define Var($\frac{1}{n}$Y).
+		\begin{center}
+			Var($\frac{1}{n}$Y) = E[($\frac{1}{n}$Y)\textsuperscript{2}] - (E[$\frac{1}{n}$Y])\textsuperscript{2}
+		\end{center}
+		Given from d), that E[$\frac{1}{n}$Y] = E[X\textsubscript{i}], then
+		\begin{center}
+			Var($\frac{1}{n}$Y) = E[X\textsubscript{i}\textsuperscript{2}] - (E[X\textsubscript{i}])\textsuperscript{2}
+		\end{center}
+		From a) we know that E[X\textsubscript{i}\textsuperscript{2}] - (E[X\textsubscript{i}])\textsuperscript{2} = Var(X\textsubscript{i}).
+		Therefore Var($\frac{1}{n}$Y) in terms of Var(X\textsubscript{i}) is
+		\begin{center}
+			Var($\frac{1}{n}$Y) = Var(X\textsubscript{i})
+		\end{center}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		\section*{\hfil Question 3 \hfil}
+		Suppose that 2 balls are chosen without replacement from an urn consisting of 5 white and 8 red balls. Let X\textsubscript{i} equal 1 if the i’th ball selected is white, and let it equal
+		0 otherwise.
+		
+		\subsection*{a) Give the joint probability mass function of X\textsubscript{1} and X\textsubscript{2}}
+		X\textsubscript{i} = 1, if the ball is white.\\
+		X\textsubscript{i} = 0, if the ball is not white (red).\\
+		To find the joint probability mass function, we must find the intersections for all different values of X\textsubscript{1} and X\textsubscript{2} (ie when X\textsubscript{1} = 0 and X\textsubscript{2} = 0, when X\textsubscript{1} = 0 and X\textsubscript{2} = 1, and so on)
+		The intersection is given by the formula : 
+		\begin{center}
+			P(X\textsubscript{1} $\cap$ X\textsubscript{2}) = P(X\textsubscript{2} $\vert$ X\textsubscript{1})P(X\textsubscript{1})
+		\end{center}
+		So we must now find the values that we will need to get the intersections, given by :\\
+		P(X\textsubscript{1} = 0) = $\frac{8}{13}$, for 8 red balls from 13.\\
+		P(X\textsubscript{1} = 1) = $\frac{5}{13}$, for 5 white balls from 13.\\
+		P(X\textsubscript{2} = 0 $\vert$ X\textsubscript{1} = 0) = $\frac{7}{12}$, for 7 red balls (one having been taken already) from 12 remaining balls.\\
+		P(X\textsubscript{2} = 1 $\vert$ X\textsubscript{1} = 0) = $\frac{5}{12}$, for 5 white balls (no white balls having been taken already) from 12 remaining balls.\\
+		P(X\textsubscript{2} = 0 $\vert$ X\textsubscript{1} = 1) = $\frac{8}{12}$, for 8 red balls (no red balls having been taken already) from 12 remaining balls.\\
+		P(X\textsubscript{2} = 1 $\vert$ X\textsubscript{1} = 1) = $\frac{4}{12}$, for 4 white balls (one having been taken already) from 12 remaining balls.\\\\
+		
+		We can now find the intersections given by :\\
+		P(X\textsubscript{1} = 0 $\cap$ X\textsubscript{2} = 0) = $\frac{7}{12}$ * $\frac{8}{13}$ = $\frac{14}{39}$\\
+		P(X\textsubscript{1} = 1 $\cap$ X\textsubscript{2} = 0) = $\frac{8}{12}$ * $\frac{5}{13}$ = $\frac{10}{39}$\\
+		P(X\textsubscript{1} = 0 $\cap$ X\textsubscript{2} = 1) = $\frac{5}{12}$ * $\frac{8}{13}$ = $\frac{10}{39}$\\
+		P(X\textsubscript{1} = 1 $\cap$ X\textsubscript{2} = 1) = $\frac{4}{12}$ * $\frac{5}{13}$ = $\frac{5}{39}$\\
+		\\
+		By these calculations, the joint probability mass function is given by :
+		\begin{table}[h!]
+			\begin{center}
+				\label{tab:table1}
+				\begin{tabular}{r|c|c|c} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+					\textbf{} & \textbf{X\textsubscript{1} = 0} & \textbf{X\textsubscript{1} = 1} & \textbf{P(X\textsubscript{2} = x)}\\
+					\hline
+					\textbf{X\textsubscript{2} = 0} & $\frac{14}{39}$ & $\frac{10}{39}$ & $\frac{8}{13}$\\
+					\textbf{X\textsubscript{2} = 1} & $\frac{10}{39}$ & $\frac{5}{39}$ & $\frac{5}{13}$\\
+					\textbf{P(X\textsubscript{1} = x)} & $\frac{8}{13}$ & $\frac{5}{13}$ & 1\\
+				\end{tabular}
+			\end{center}
+		\end{table}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		\subsection*{b) Are X\textsubscript{1} and X\textsubscript{2} independent? (Use the formal definition of independence to determine this)}
+		The formal definition of independence states two events are independent if 
+		\begin{center}
+			P(E $\cap$ F) = P(E)P(F)
+		\end{center}
+		So, taking X\textsubscript{1} = 1 and X\textsubscript{2} = 1 (from part a):\\
+		P(X\textsubscript{1} = 1 $\cap$ X\textsubscript{2} = 1) = $\frac{5}{39}$\\
+		P(X\textsubscript{1} = 1) = $\frac{5}{13}$\\
+		P(X\textsubscript{2} = 1) = $\frac{5}{13}$\\
+		From the definition of independence :
+		\begin{center}
+			$\frac{5}{39}$ $\neq$ $\frac{5}{13}$ * $\frac{5}{13}$
+		\end{center}
+		Therefore X\textsubscript{1} and X\textsubscript{2} are \textbf{not} independent.
+		
+		
+		
+
+		\subsection*{c) Calculate E[X\textsubscript{2}]}
+		E[X\textsubscript{2}] = $\sum_{i=1}^{n} (X\textsubscript{2i})(P(X = X\textsubscript{2i}))$\\
+		This is given as :
+		\begin{center}
+			E[X\textsubscript{2}] = (0)($\frac{8}{13}$) + (1)($\frac{5}{13}$) = $\frac{5}{13}$
+		\end{center}
+		(the probabilites were calculated in part a)
+		
+		
+
+		\subsection*{d) Calculate E[X\textsubscript{2} $\vert$ X\textsubscript{1} = 1]}
+		E[X\textsubscript{2} $\vert$ X\textsubscript{1} = 1] = $\sum_{i=1}^{n} (X\textsubscript{2i} \vert X\textsubscript{1} = 1)(P(X\textsubscript{2i} \vert X\textsubscript{1} = 1))$\\
+		This is given as :
+		\begin{center}
+			E[X\textsubscript{2} $\vert$ X\textsubscript{1} = 1] = (0)($\frac{8}{12}$) + (1)($\frac{4}{12}$) = $\frac{4}{12}$
+		\end{center}
+		;(the probabilites were calculated in part a)
+		
+		
+	
+		
+	
+	
+		
+		
+\end{document}
+
+
+
+
